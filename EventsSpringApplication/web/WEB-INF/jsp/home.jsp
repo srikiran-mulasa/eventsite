@@ -1,7 +1,7 @@
 <%-- 
-    Document   : eventsJsp
-    Created on : 30 Oct, 2014, 12:15:45 PM
-    Author     : srikiran
+    Document   : home
+    Created on : Oct 31, 2014, 1:10:35 AM
+    Author     : admin
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
