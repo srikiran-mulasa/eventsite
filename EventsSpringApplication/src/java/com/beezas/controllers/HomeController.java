@@ -4,21 +4,25 @@
  * and open the template in the editor.
  */
 package com.beezas.controllers;
-
+import com.beezas.controllers.UserDetails;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 /**
  *
  * @author admin
  */
 @Controller("home")
-@RequestMapping("/")
+@SessionAttributes("UserDetails")
+
 public class HomeController {
-    
-    @RequestMapping(method = RequestMethod.GET)
-    public String home() {
-        return "home";
+    private UserDetails userDetails;
+    @ModelAttribute
+    public UserDetails getUserInfo() {
+        return userDetails;
     }
 }
