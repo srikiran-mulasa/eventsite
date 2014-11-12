@@ -13,5 +13,7 @@ import java.util.List;
  * @author RaviJyothi
  */
 public interface EventDao {
-    public List createEvents();
+    public void insertData(User user);  
+    public List getCategories();
+    public List<SubCategory> getSubCategories();
 }

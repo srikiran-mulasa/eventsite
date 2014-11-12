@@ -4,12 +4,17 @@
  * and open the template in the editor.
  */
 
-package com.beezas.controllers;
+package com.beezas.services;
+
+import com.beezas.dao.User;
+import java.util.List;
 
 /**
  *
  * @author RaviJyothi
  */
-public class UserDetails {
-    
+public interface EventService {
+    public void insertData(User user); 
+    public List getCategories();
+    public List getSubCategories();
 }

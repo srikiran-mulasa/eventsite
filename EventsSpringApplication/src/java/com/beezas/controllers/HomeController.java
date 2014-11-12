@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.beezas.controllers;
-import com.beezas.controllers.UserDetails;
+import com.beezas.dao.User;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,13 +17,13 @@ import org.springframework.web.bind.annotation.SessionAttributes;
  *
  * @author admin
  */
-@Controller("home")
-@SessionAttributes("UserDetails")
+@Controller
+
 
 public class HomeController {
-    private UserDetails userDetails;
+    private User userDetails;
     @ModelAttribute
-    public UserDetails getUserInfo() {
+    public User getUserInfo() {
         return userDetails;
     }
 }

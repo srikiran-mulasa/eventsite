@@ -1,4 +1,4 @@
-create table event(id number(4),venue_id number(4),title varchar(50),paid char(1),private char(1),webinar char(1),description varchar(400),PRIMARY KEY (id));
+create table event(id number(4),venue_id number(4),title varchar(50),paid varchar(3),private varchar(3),webinar char(1),description varchar(400),PRIMARY KEY (id));
 
 create table category(id number(4),category_name varchar(50),PRIMARY KEY (id));
 
