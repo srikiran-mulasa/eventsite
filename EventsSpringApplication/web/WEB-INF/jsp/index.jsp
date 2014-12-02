@@ -8,7 +8,7 @@
         <title>Events page</title>
     </head>
      <div>  
-   <form:form method="post" action="/insert" modelAttribute="user">  
+   <%--<form:form method="post" action="/insert" modelAttribute="user">  
     <table>  
      <tr>  
       <td>Title</td>  
@@ -24,6 +24,6 @@
      </tr>  
     
     </table>  
-   </form:form>  
+   </form:form>  --%>
   </div>  
 </html>

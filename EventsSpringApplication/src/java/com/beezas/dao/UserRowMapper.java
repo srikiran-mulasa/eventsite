@@ -22,4 +22,4 @@ public class UserRowMapper implements RowMapper<User> {
   return userExtractor.extractData(resultSet);  
  }  
   
-}  
+} 
