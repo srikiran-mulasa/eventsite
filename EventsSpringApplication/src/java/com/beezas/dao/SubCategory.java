@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.beezas.dao;
 
 /**
@@ -11,9 +10,10 @@ package com.beezas.dao;
  * @author RaviJyothi
  */
 public class SubCategory {
+
     private int subCategoryId;
     private String subCategoryName;
-     private int subCategoryNum;
+    private int subCategoryNum;
 
     public int getSubCategoryNum() {
         return subCategoryNum;
@@ -37,5 +37,5 @@ public class SubCategory {
 
     public void setSubCategoryName(String subCategoryName) {
         this.subCategoryName = subCategoryName;
-    } 
+    }
 }
