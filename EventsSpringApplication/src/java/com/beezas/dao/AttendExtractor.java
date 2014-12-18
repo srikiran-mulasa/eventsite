@@ -6,23 +6,22 @@
 
 package com.beezas.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import org.springframework.dao.DataAccessException;
+
 /**
  *
  * @author RaviJyothi
  */
-import java.sql.ResultSet;  
-import java.sql.SQLException;  
-import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.ResultSetExtractor;
-
-public class UserExtractor implements ResultSetExtractor<User> {
-
+public class AttendExtractor {
     public User extractData(ResultSet resultSet) throws SQLException,
             DataAccessException {
         User user = new User();
-        user.setCategoryId(resultSet.getInt(1));
-        user.setCategoryName(resultSet.getString(2));
-        return user;
+       
+        user.setWebAttend(resultSet.getString(1));
+       
+       return user;
         
     }
     

@@ -11,15 +11,27 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Events page</title>
+        <script src="jquery-2.1.1.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
         <script>
-           function subValues()
-           {
-             console.log("hello");
-               var i = 0;
-              var selectedCategory =document.getElementById("categoryId").value;
-              
-              console.log(selectedCategory);
-              if(selectedCategory!==null && selectedCategory!=="-")
+            $(document).ready(function() {
+                $("form input:radio").click(function() {
+                    if (document.getElementById("chk").checked) {
+                        $("form input:radio").addAttr("checked");
+                    } else {
+                        $("form input:radio").removeAttr("checked");
+                    }
+                });
+            });
+            function subValues()
+            {
+                console.log("hello");
+                var i = 0;
+                var selectedCategory = document.getElementById("categoryId").value;
+
+                console.log(selectedCategory);
+                if (selectedCategory !== null && selectedCategory !== "-")
                 {
                     var secondDDContent = document.getElementsByName(selectedCategory);
                     console.log("hellooo" + secondDDContent.length);
@@ -47,7 +59,18 @@
                     }
                 }
             }
-
+          
+            function eventAttendees(){
+                document.getElementById("eventAttend").innerHTML = document.getElementById("webAttend").value;
+            }
+            function addData(){
+                console.log("in data");
+                 document.getElementById("attendText").innerHTML = document.getElementById("attend").value;
+            }
+            function deleteData(){
+                console.log("in data");
+                document.getElementById("attendText").innerHTML = "";
+                }
         </script>   
     </head>
     <div>  
@@ -67,8 +90,21 @@
                 <tr>  
                     <td>Private Event :</td>  
                     <td><form:radiobuttons path="privateEvent"  
-                                       items="${map.privateList}" /></td>  
-                </tr>  
+                                       items="${map.privateList}"  /></td>  
+                </tr> 
+                <tr>  
+                    <td>webinar(if applicable)<input type="checkbox" id="chk"/></td>
+                    <td>Webinar only             :</td>  
+                    <td><form:radiobuttons  path="webinar"   id="webinar"
+                                        items="${map.webList}"   onclick="javascript:webEnable();" />
+
+                    </td>  
+                </tr> 
+                <tr>  
+                    <td>Webinar Url</td>  
+                    <td><form:input path="weburl" /></td>  
+                </tr> 
+
                 <tr>
                     <td>Category</td>
                     <td>
@@ -81,7 +117,7 @@
                 <tr>
                     <td>Sub Category</td>
                     <td>
-                        <form:select path="subCategoryNum">
+                        <form:select path="" id="subCategoryNum">
                             <form:option value="-" label="--Please Select"/>
                             <%--
                                 <form:options items="${subCategoryNum}" itemValue="subCategoryName" itemLabel="subCategoryName"/>
@@ -92,19 +128,33 @@
                         </form:select>
                     </td>
                 </tr>
-                <tr>  
-                    <td>Webinar Url</td>  
-                    <td><form:input path="weburl" /></td>  
-                </tr> 
+
                 <tr>
 
                     <td>Event Description</td>
                     <td><form:textarea path="eventDescription" /></td>
                 </tr>
-                <td> </td>  
-                <td><input type="submit" value="Save" /></td>  
+                <tr>
+                    <td>Webinar(only)</td>
+                    <td>
+                        <form:select path="webAttend" id="webAttend"  onchange="javascript:eventAttendees();">
+                            <form:option value="-" label="--Please Select"/>
+                            <form:options items="${webAttend}" itemValue="webAttend"/>
+                        </form:select>
+                    </td>
+                    <td><form:textarea path="attend" id="attend"/></td>
+                    <td><input type="button" value="Add" onclick="addData();"/></td>  
+                </tr>
+                <tr>
+                    <td><label id="eventAttend" /></td>
+                    <td><label id="attendText"/></td>
+                    <td><input type="button" value="Edit" onclick="editData();"/></td> 
+                    <td><input type="button" value="Delete" onclick="deleteData();"/></td> 
+                </tr>
+                <tr>
+                    <td> </td>  
+                    <td><input type="submit" value="Save" /></td>  
                 </tr> 
-
             </table>  
         </form:form>  
     </div>  

@@ -36,4 +36,7 @@ public class EventServiceImpl implements EventService{
   public List<SubCategory> getSubCategories(){
        return eventDao.getSubCategories();
    }
+  public List getAttendees(){
+       return eventDao.getAttendees();
+   }
 }

@@ -13,8 +13,9 @@ import java.util.List;
  *
  * @author RaviJyothi
  */
-public interface EventService {
+    public interface EventService {
     public void insertData(User user); 
     public List getCategories();
     public List getSubCategories();
+    public List getAttendees();
 }

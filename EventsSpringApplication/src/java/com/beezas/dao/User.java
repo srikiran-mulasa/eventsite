@@ -11,10 +11,77 @@ package com.beezas.dao;
  * @author RaviJyothi
  */
 public class User {
-      private int subCategoryId;
+    private int subCategoryId;
     private String subCategoryName;
-     private int subCategoryNum;
+    private int subCategoryNum;
+    private String title;
+    private String weburl;
+    private String paidEvent;
+    private String privateEvent;
+    private String webinar;
+    private String webAttend;
+    private String eventAttend;
+    private String attendDescription;
+    private String attend;
 
+    public String getChk() {
+        return chk;
+    }
+
+    public void setChk(String chk) {
+        this.chk = chk;
+    }
+    private String chk;
+
+    public String getAttendText() {
+        return attendText;
+    }
+
+    public void setAttendText(String attendText) {
+        this.attendText = attendText;
+    }
+    private String attendText;
+
+    public String getAttend() {
+        return attend;
+    }
+
+    public void setAttend(String attend) {
+        this.attend = attend;
+    }
+    
+
+    public String getEventAttend() {
+        return eventAttend;
+    }
+
+    public void setEventAttend(String eventAttend) {
+        this.eventAttend = eventAttend;
+    }
+
+    public String getAttendDescription() {
+        return attendDescription;
+    }
+
+    public void setAttendDescription(String attendDescription) {
+        this.attendDescription = attendDescription;
+    }
+
+    public String getWebAttend() {
+        return webAttend;
+    }
+
+    public void setWebAttend(String webAttend) {
+        this.webAttend = webAttend;
+    }
+
+    public String getWebinar() {
+        return webinar;
+    }
+
+    public void setWebinar(String webinar) {
+        this.webinar = webinar;
+    }
     public int getSubCategoryNum() {
         return subCategoryNum;
     }
@@ -57,11 +124,7 @@ public class User {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
-    private String title;
-    private String weburl;
-    private String paidEvent;
-    private String privateEvent;
-
+   
     public String getPaidEvent() {
         return paidEvent;
     }
@@ -105,4 +168,10 @@ public class User {
     public void setWeburl(String weburl) {
         this.weburl = weburl;
     }
+
+    @Override
+    public String toString() {
+        return webAttend;
+    }
+    
 }

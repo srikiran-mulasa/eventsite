@@ -26,16 +26,24 @@ public class EventDaoImpl implements EventDao {
     public void insertData(User user) {
 
         String sql = "insert into events"
-                + "(title,url,paidevent,privateevent,description ) VALUES (?, ?,?,?,?)";
+                + "(title,paidevent,privateevent,webinar,weburl,sub_category_id,description) VALUES (?,?,?,?,?,?,?)";
 
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 
         jdbcTemplate.update(
                 sql,
-                new Object[]{user.getTitle(), user.getWeburl(),
+                new Object[]{user.getTitle(),
                     user.getPaidEvent(),
                     user.getPrivateEvent(),
-                    user.getEventDescription()});
+                    user.getWebinar(),
+                    user.getWeburl(),
+                    user.getCategoryId(),
+                    user.getEventDescription(),
+                    //user.getWebAttend(),
+                   
+                     });
+        
+    System.out.println("get category id"+user.getSubCategoryId());
 
     }
    public List<User> getCategories() {  
@@ -50,7 +58,14 @@ public List<SubCategory> getSubCategories() {
   List categoryList = new ArrayList();  
   String sql = "select * from sub_category";  
   JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);  
-  categoryList = jdbcTemplate.query(sql, new UserRowMapper());  
+  categoryList = jdbcTemplate.query(sql, new SubCategoryRowMapper());  
   return categoryList;  
+ }
+ public List getAttendees() {  
+  List attendeesList = new ArrayList();  
+  String sql = "select * from attendees";  
+  JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);  
+  attendeesList = jdbcTemplate.query(sql, new AttendRowMapper());  
+  return attendeesList;  
  }
 }

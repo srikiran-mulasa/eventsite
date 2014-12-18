@@ -16,4 +16,5 @@ public interface EventDao {
     public void insertData(User user);  
     public List getCategories();
     public List<SubCategory> getSubCategories();
+     public List getAttendees();
 }

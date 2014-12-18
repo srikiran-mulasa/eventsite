@@ -26,7 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 
-public class CreateController {
+public class EventController {
 
     @Autowired
     EventService eventService;
@@ -35,31 +35,43 @@ public class CreateController {
     public ModelAndView getAdd(@ModelAttribute User user) {
         //model.addAttribute("user", new User());
         List<String> paidList = new ArrayList<String>();
-         List<String> privateList = new ArrayList<String>();
+        List<String> privateList = new ArrayList<String>();
+        List<String> webList = new ArrayList<String>();
         paidList.add("yes");
         paidList.add("no");
         privateList.add("yes");
         privateList.add("no");
+        webList.add("yes");
+        webList.add("no");
         Map<String, List> map = new HashMap<String, List>();
         map.put("paidList", paidList);
-         map.put("privateList", privateList);
-       return new ModelAndView("createEvent", "map", map);  
+        map.put("privateList", privateList);
+        map.put("webList", webList);
+        return new ModelAndView("createEvent", "map", map);
     }
 
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
-    public String inserData(@ModelAttribute User user) {
-        if (user != null) {
+    public String insertData(@ModelAttribute User user) {
+        System.out.println("hello user");
+       if (user != null) {
+            System.out.println("hello controller" + user.getSubCategoryId());
             eventService.insertData(user);
-        }
+
+       }
         return "addpage";
     }
-   
-  @ModelAttribute("categoryId")
-public Collection populateCategories() {
-return eventService.getCategories();
-}
- @ModelAttribute("subCategoryNum")
-public Collection populateSubCategories() {
-return eventService.getSubCategories();
-}
+
+    @ModelAttribute("categoryId")
+    public Collection populateCategories() {
+        return eventService.getCategories();
+    }
+
+    @ModelAttribute("subCategoryNum")
+    public Collection populateSubCategories() {
+        return eventService.getSubCategories();
+    }
+    @ModelAttribute("webAttend")
+    public Collection populateAttendees() {
+        return eventService.getAttendees();
+    }
 }
