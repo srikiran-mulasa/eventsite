@@ -8,6 +8,7 @@ package com.beezas.controllers;
 import com.beezas.dao.Contact;
 import com.beezas.services.ContactService;
 import java.util.*;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -29,32 +30,75 @@ public class ContactController {
     @Autowired
     ContactService contactService;
 
-    @RequestMapping("/add")
-    public ModelAndView getAdd(@ModelAttribute Contact contact) {
+//    @Autowired
+//    Contact contact;
+            
+//    @RequestMapping("/add")
+//    public ModelAndView getAdd(@ModelAttribute Contact contact) {
+//        List<String> eventDisplayList = new ArrayList<String>();
+//        eventDisplayList.add("yes");
+//        eventDisplayList.add("no");
+//        Map<String, List> map = new HashMap<String, List>();
+//        map.put("eventDisplayList", eventDisplayList);
+//       // System.out.println(eventDisplayList);
+//        return new ModelAndView("contactpage", "map", map);
+    
+    
+        @RequestMapping("/add")
+     public ModelAndView getAdd(@ModelAttribute Contact contact,Model model ) {
         List<String> eventDisplayList = new ArrayList<String>();
         eventDisplayList.add("yes");
         eventDisplayList.add("no");
         Map<String, List> map = new HashMap<String, List>();
+          //List<Contact> entireContactList =  contactService.getContactList();
         map.put("eventDisplayList", eventDisplayList);
-        return new ModelAndView("contactpage", "map", map);
+        // map.put("entireContactList", entireContactList);
+         System.out.println(eventDisplayList);
+        List<Contact> entireContactList =  contactService.getContactList();
+         model.addAttribute("entireContactList", entireContactList);
+        return new ModelAndView("contactpage", "map", map);     
     }
     
-       @RequestMapping(value= "/save", method = RequestMethod.GET) 
-    public String insertData(@ModelAttribute Contact contact) {
+     @RequestMapping(value= "/save", method = RequestMethod.GET) 
+    public String insertData(@ModelAttribute Contact contact, Model model) {
         contactService.insertData(contact);
-        return "addpage";
+         List<Contact> entireContactList =  contactService.getContactList();
+          model.addAttribute("entireContactList", entireContactList);
+          System.out.println("In controller : " + entireContactList);
+        return "contactpage";
     }
-
+    
+    
     @ModelAttribute("medianame")
     public Collection getDisplay() {
         System.out.println("Hai this is in contactcontroller" + contactService.getMediaNam());
         return contactService.getMediaNam();
     }
     
-    @ModelAttribute("contacttypename")
+    
+    @ModelAttribute("contacttype")
     public Collection getDisplayType() {
         System.out.println("Hai this is in contactcontroller" + contactService.getContactTyp());
         return contactService.getContactTyp();
     }
+   
+    
+     @RequestMapping(value="/deleteContact", method = RequestMethod.GET)
+    public ModelAndView delete(HttpServletRequest request){
+        int Id = Integer.parseInt(request.getParameter("Id"));
+        contactService.deleteContact(Id);
+      // return "redirect:/contact/add"; 
+        return new ModelAndView("redirect:/contact/add");
+    }
+    
+//     @RequestMapping(value="/deleteContact", method = RequestMethod.GET)
+//    public String delete(HttpServletRequest request){
+//        int Id = Integer.parseInt(request.getParameter("Id"));
+//        contactService.deleteContact(Id);
+//      return "redirect:/contact/add"; 
+//        //return new ModelAndView("redirect:/contact/add");
+//    }
+    
+      
 
 }

@@ -14,16 +14,16 @@ public interface ContactDao {
 
     public void insertData(Contact contact); //this is used for inserting data
     
-    //public void deleteData(int Id); //this is used for deleting data
+    public void deleteContact(int Id); //this is used for deleting data
    
     
     
     
-     public List<Contact> getContactList();  //this 
+     public List<Contact> getContactList();  //this is used for display entire contact
     
-    public List<Contact> getMediaNam(); //dropdown for medias(fb,twit,gmail,yahoo----)
+    public List<ContDrpDwns> getMediaNam(); //dropdown for medias(fb,twit,gmail,yahoo----)
     
-    public List<Contact> getContactTyp();  //dropdown for contacttypes(eventorgan,mngr,sponsore) 
+    public List<ContDrpDwns> getContactTyp();  //dropdown for contacttypes(eventorgan,mngr,sponsore) 
     
 
 }

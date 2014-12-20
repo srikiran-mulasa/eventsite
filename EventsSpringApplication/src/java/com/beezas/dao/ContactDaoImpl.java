@@ -12,6 +12,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.jdbc.core.JdbcTemplate;
+import com.beezas.dao.ContDrpDwnRowMapper;
 
 /**
  *
@@ -23,8 +24,6 @@ public class ContactDaoImpl implements ContactDao {
     JdbcTemplate jdbcTemplate;
     @Autowired
     DataSource dataSource;
-//    @Autowired
-//    Contact contact;
 
     @Override
     public void insertData(Contact contact) {
@@ -52,40 +51,40 @@ public class ContactDaoImpl implements ContactDao {
     
     
     @Override
-    public List<Contact> getMediaNam() {
+    public List<ContDrpDwns> getMediaNam() {
         List mediaNam = new ArrayList();
         String sql = "SELECT * FROM MEDIA";
         jdbcTemplate = new JdbcTemplate(dataSource);
-        mediaNam = jdbcTemplate.query(sql, new ContactRowMapper());
-        System.out.println("hai these are the items present in DaoImpl(ContactDaoImpl) " + mediaNam);
+        mediaNam = jdbcTemplate.query(sql, new ContDrpDwnRowMapper());
+        System.out.println("Present in DaoImpl mediavalues " + mediaNam);
         return mediaNam;
     }
 
     @Override
-    public List<Contact> getContactTyp() {
-        List mediaNam = new ArrayList();
+    public List<ContDrpDwns> getContactTyp() {
+        List contactNam = new ArrayList();
         String sql = "SELECT * FROM CONTACTTYPE";
         jdbcTemplate = new JdbcTemplate(dataSource);
-        mediaNam = jdbcTemplate.query(sql, new ContactRowMapper());
-        System.out.println("hai these are the items present in DaoImpl(ContactDaoImpl) " + mediaNam);
-        return mediaNam;
+        contactNam = jdbcTemplate.query(sql, new ContDrpDwnRowMapper());
+        System.out.println("Present in DaoImpl conttyp values " + contactNam);
+        return contactNam;
     }
     
     public List<Contact> getContactList() {
-        List mediaNam = new ArrayList();
+        List entireNam = new ArrayList();
         String sql = "SELECT * FROM CONTACT";
         jdbcTemplate = new JdbcTemplate(dataSource);
-        mediaNam = jdbcTemplate.query(sql, new ContactRowMapper());
-        System.out.println("hai these are the items present in DaoImpl(ContactDaoImpl)" + mediaNam);
-        return mediaNam;
+        entireNam = jdbcTemplate.query(sql, new ContactRowMapper());
+        System.out.println("Present in DaomImpl mottam contact" + entireNam);
+        return entireNam;
     }
     
-//    @Override
-//    public void deleteData(int Id){
-//          String sql = "DELETE FROM CONTACT WHERE ID=?"; //WE ARE USING PRIMARY-KEY(ID) FROM CONTACT TABLE
-//          jdbcTemplate = new JdbcTemplate(dataSource);
-//          jdbcTemplate.update(sql, Id);
-//    }
+    @Override
+    public void deleteContact(int Id){
+          String sql = "DELETE FROM CONTACT WHERE ID=?"; //WE ARE USING PRIMARY-KEY(ID) FROM CONTACT TABLE
+          jdbcTemplate = new JdbcTemplate(dataSource);
+          jdbcTemplate.update(sql, Id);
+    }
 
    
    

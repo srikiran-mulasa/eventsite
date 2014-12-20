@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.beezas.dao.Contact;
 import com.beezas.dao.ContactDao;
-//import com.beezas.dao.Media;
+import com.beezas.dao.ContDrpDwns;
 
 import java.util.List;
 
@@ -34,18 +34,18 @@ public class ContactServiceImpl implements ContactService {
      */
     
     
-//    @Override
-//    public void deleteData(int Id){
-//      contactDao.deleteData(Id);
-//    }
+    @Override
+    public void deleteContact(int Id){
+      contactDao.deleteContact(Id);
+    }
     
     @Override
-    public List<Contact> getMediaNam() {
+    public List<ContDrpDwns> getMediaNam() {
         return contactDao.getMediaNam();
     }
     
      @Override
-    public List<Contact> getContactTyp() {
+    public List<ContDrpDwns> getContactTyp() {
         return contactDao.getContactTyp();
     }
 

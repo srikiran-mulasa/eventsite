@@ -11,7 +11,7 @@ package com.beezas.dao;
  */
 public class Contact {
 
-    private int Id;
+    private int id;
     public String medianame;
     public String contacttypename;
     private String email;
@@ -21,27 +21,13 @@ public class Contact {
     private int phonenumber;
     private String contactemail;
 
-    //Constructor
-    
-//    public Contact(int Id, String medianame, String contacttypename, String email, String eventDisplay, String fname, String lname, int phonenumber, String contactemail) {
-//        this.Id = Id;
-//        this.medianame = medianame;
-//        this.contacttypename = contacttypename;
-//        this.email = email;
-//        this.eventDisplay = eventDisplay;
-//        this.fname = fname;
-//        this.lname = lname;
-//        this.phonenumber = phonenumber;
-//        this.contactemail = contactemail;
-//    }
-
     //Getters and Setters 
     public int getId() {
-        return Id;
+        return id;
     }
 
-    public void setId(int Id) {
-        this.Id = Id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getContactemail() {

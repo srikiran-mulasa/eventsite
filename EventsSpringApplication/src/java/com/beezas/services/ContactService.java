@@ -6,7 +6,7 @@
 package com.beezas.services;
 
 import com.beezas.dao.Contact;
-//import com.beezas.dao.Media;
+import com.beezas.dao.ContDrpDwns;
 import java.util.List;
 
 /**
@@ -17,25 +17,14 @@ public interface ContactService {
 
     public void insertData(Contact contact);
      
-    public List<Contact> getMediaNam();
+    public List<ContDrpDwns> getMediaNam();
     
-    public List<Contact> getContactTyp();
-    
-    /**
-     *
-     * @return
-     */
+    public List<ContDrpDwns> getContactTyp();
+  
     public List<Contact> getContactList();
     
-    //public void deleteData(Contact contact);
+    public void deleteContact(int Id);
     
     
-    
-    
-    
-    
-    
-    
-    
-    //public void deleteData(int Id);
+     //public void deleteData(Contact contact);
 }
