@@ -4,9 +4,10 @@
     Author     : HP
 --%>
 
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>  
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>  
+ 
 
 <!DOCTYPE html>
 <html>
@@ -16,11 +17,12 @@
 
     </head>
     <body>
-        ${listContact}
+      
         <%-- ${map}  --%>
         <div>
             <form:form method="GET" name="contacts" action="save" modelAttribute="contact">
                 <table>
+                      ${entireContactList}
                     <tr>
                         <td>ID</td>
                         <td><form:input path="Id" type="number"/></td>
@@ -37,11 +39,11 @@
                     </tr>
 
                     <tr>
-                        ${contacttypename} 
+                        ${contacttype} 
                         <td>contact Type-name:</td>
                         <td>
                             <form:select path="contacttypename">
-                                <form:options items="${contacttypename}" itemValue="contacttypename"/>
+                                <form:options items="${contacttype}" itemValue="contacttype"/>
                             </form:select>                       
                         </td>
                     </tr> 
@@ -50,10 +52,10 @@
                         <td>Email:</td>
                         <td><form:input path="email" type="text"/></td>
                     </tr> 
-                    ${eventDisplayList}
+                    ${map.eventDisplayList}
                     <tr>
                         <td>Event-Display :</td>  
-                        <td><form:radiobuttons path="eventDisplay" items="${eventDisplayList}"/></td>
+                        <td><form:radiobuttons path="eventDisplay" items="${map.eventDisplayList}" /></td>
                     </tr>
 
                     <tr>
@@ -89,6 +91,7 @@
                 <h1>Contact List</h1>
                 <h3><a href="/newContact">New Contact</a></h3>
                 <table border="1">
+                    <th>ID</th>
                     <th>MEDIA_NAME</th>
                     <th>CTYPE_NAME</th>
                     <th>EMAIL </th>
@@ -99,21 +102,21 @@
                     <th>CONTACT_PHNO</th>
                     <th>ACTION</th>
 
-                    <c:forEach var="contact" items="${listContact}" varStatus="status">
+                    <c:forEach var="cont" items="${entireContactList}">
                         <tr>
-                            <td>${status.index + 1}</td>  
-                            <td> ${contact.medianame}</td>
-                            <td>${contact.contacttypename}</td>
-                            <td>${contact.email}</td>
-                            <td>${contact.eventDisplay}</td>
-                            <td>${contact.fname}</td>
-                            <td>${contact.lname}</td>
-                            <td>${contact.contactemail}</td>
-                            <td>${contact.phonenumber}</td>
+                            <td>${cont.id}</td>
+                            <td> ${cont.medianame}</td>
+                            <td>${cont.contacttypename}</td>
+                            <td>${cont.email}</td>
+                            <td>${cont.eventDisplay}</td>
+                            <td>${cont.fname}</td>
+                            <td>${cont.lname}</td>
+                            <td>${cont.contactemail}</td>
+                            <td>${cont.phonenumber}</td>
                             <td>
-                                <a href="/editContact?id=${contact.id}">Edit</a>
+                                <%--- <a href="/editContact?id=${contact.id}">Edit</a> ---%>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
-                                <%-- <a href="/deleteContact?id=${contact.id}">Delete</a>  --%>
+                                 <a href="/EventContactScreen/contact/deleteContact?id=${cont.id}">Delete</a>  
                             </td> 
 
                         </tr>

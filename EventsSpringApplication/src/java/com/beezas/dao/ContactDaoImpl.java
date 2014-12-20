@@ -80,10 +80,10 @@ public class ContactDaoImpl implements ContactDao {
     }
     
     @Override
-    public void deleteContact(int Id){
+    public void deleteContact(int id){
           String sql = "DELETE FROM CONTACT WHERE ID=?"; //WE ARE USING PRIMARY-KEY(ID) FROM CONTACT TABLE
           jdbcTemplate = new JdbcTemplate(dataSource);
-          jdbcTemplate.update(sql, Id);
+          jdbcTemplate.update(sql, id);
     }
 
    

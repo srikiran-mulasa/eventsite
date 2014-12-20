@@ -14,7 +14,7 @@ public interface ContactDao {
 
     public void insertData(Contact contact); //this is used for inserting data
     
-    public void deleteContact(int Id); //this is used for deleting data
+    public void deleteContact(int id); //this is used for deleting data
    
     
     

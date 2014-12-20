@@ -1,7 +1,7 @@
 <%-- 
     Document   : addpage
-    Created on : Nov 4, 2014, 1:11:22 PM
-    Author     : RaviJyothi
+    Created on : Nov 18, 2014, 8:28:47 PM
+    Author     : HP
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,9 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>reference fields Page</title>
     </head>
     <body>
-        <h1>added fields</h1>
+        <h1><p>Values are added in database
+                So See in SQL</p></h1>
     </body>
 </html>
