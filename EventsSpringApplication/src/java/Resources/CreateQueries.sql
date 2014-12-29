@@ -114,10 +114,12 @@ INSERT INTO CONTACTTYPE VALUES(444,'SPEAKER');
 
 -- *************Yashwant************
 
-CREATE TABLE TICKET
-{
-TICKET DATE/TIME(VARCHAR2(50),TICKET TYPE VARCHAR2(30),NO OF TICKETS TO SELL()
-};
+create table TICKETS(
+ticket_id int not null,
+ticket_type varchar(30),
+total_tickets number,
+primary key(ticket_id)
+);
 
 
 -- ***************Chandan*********
