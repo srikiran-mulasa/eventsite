@@ -27,28 +27,28 @@ public class ContactDaoImpl implements ContactDao {
 
     @Override
     public void insertData(Contact contact) {
-//        if (contact.getId() > 0) {
-//            // This is for updating data
-//            String sql = "UPDATE contact SET MEDIA_NAME=?, CTYPE_NAME=?, EMAIL=?, EVENT_DISPLAY=?, CONTACT_FIRST_NAME=?,"
-//                    + "CONTACT_LAST_NAME=?, CONTACT_EMAIL=?, CONTACT_PHNO=? WHERE ID=?";
-//            jdbcTemplate.update(sql, contact.getMedianame(), contact.getContacttypename(), contact.getEmail(),
-//                    contact.getEventDisplay(), contact.getFname(), contact.getLname(), contact.getContactemail(),
-//                    contact.getPhonenumber(), contact.getId());
-//        } 
-//        else { }
+        if (contact.getId() > 0) {
+            // This is for updating data
+            String sql = "UPDATE contact SET MEDIA_NAME=?, CTYPE_NAME=?, EMAIL=?, EVENT_DISPLAY=?, CONTACT_FIRST_NAME=?,"
+                    + "CONTACT_LAST_NAME=?, CONTACT_EMAIL=?, CONTACT_PHNO=? WHERE ID=?";
+            jdbcTemplate.update(sql, contact.getMedianame(), contact.getContacttypename(), contact.getEmail(),
+                    contact.getEventDisplay(), contact.getFname(), contact.getLname(), contact.getContactemail(),
+                    contact.getPhonenumber(), contact.getId());
+        } 
+        else { 
         
             //This is for inserting data
             String sql = "INSERT INTO CONTACT(ID, MEDIA_NAME, CTYPE_NAME, EMAIL, EVENT_DISPLAY, CONTACT_FIRST_NAME,"
-                    + " CONTACT_LAST_NAME, CONTACT_EMAIL, CONTACT_PHNO)" + "VALUES(?,?,?,?,?,?,?,?,?)";
+                    + " CONTACT_LAST_NAME, CONTACT_EMAIL, CONTACT_PHNO)" + "VALUES(seq_id.nextval,?,?,?,?,?,?,?,?)";
 
             jdbcTemplate = new JdbcTemplate(dataSource);
             jdbcTemplate.update(sql, new Object[]{
-                contact.getId(), contact.getMedianame(), contact.getContacttypename(), contact.getEmail(), contact.getEventDisplay(),
+                contact.getMedianame(), contact.getContacttypename(), contact.getEmail(), contact.getEventDisplay(),
                 contact.getFname(), contact.getLname(), contact.getContactemail(), contact.getPhonenumber()
                         });
             
         }
-    
+    }
     
     @Override
     public List<ContDrpDwns> getMediaNam() {

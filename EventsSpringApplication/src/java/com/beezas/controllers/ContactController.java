@@ -96,11 +96,11 @@ public class ContactController {
     }
 
     @RequestMapping(value = "/deleteContact", method = RequestMethod.GET)
-    public ModelAndView delete(HttpServletRequest request) {
-        int Id = Integer.parseInt(request.getParameter("Id"));
-        contactService.deleteContact(Id);
+    public String delete(HttpServletRequest request) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        contactService.deleteContact(id);
         // return "redirect:/contact/add"; 
-        return new ModelAndView("redirect:/contact/add");
+        return "redirect:/contact/add";
     }
 
 //     @RequestMapping(value="/deleteContact", method = RequestMethod.GET)

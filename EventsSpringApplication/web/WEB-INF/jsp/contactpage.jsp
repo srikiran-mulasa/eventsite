@@ -14,22 +14,49 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     </head>
+    
     <body>
+        <script>
+            $(document).ready(function(){
+              $("button").click(function(){                 
+                    var a = $(this).parent().parent().find('td:eq(0)').text();
+                      var b = $(this).parent().parent().find('td:eq(3)').text();
+                        var c = $(this).parent().parent().find('td:eq(4)').text();
+                              var d = $(this).parent().parent().find('td:eq(5)').text();
+                                var e = $(this).parent().parent().find('td:eq(6)').text();
+                                  var f = $(this).parent().parent().find('td:eq(7)').text();
+                                  var g = $(this).parent().parent().find('td:eq(8)').text();
+                        //var c = $(this).find('td:eq(1)').text();
+                      //  console.log(c);
+              $("#contactId").val(a).hide();
+              $("#Email").val(b);
+              $("#radio").val(c);
+               $("#fname").val(d);
+                $("#lname").val(e);
+                 $("#contactEmail").val(f);
+                   $("#phoneNo").val(g);
+                 
+             
+              console.log("hai");
+            
+              });
+          });
+      
+        </script>
       
         <%-- ${map}  --%>
         <div>
             <form:form method="GET" name="contacts" action="save" modelAttribute="contact">
                 <table>
-                      ${entireContactList}
+                     <form:input path="id" style="display:none" id="contactId"/>
+                     
+                      <!--${entireContactList}-->
+                   
+                     
                     <tr>
-                        <td>ID</td>
-                        <td><form:input path="Id" type="number"/></td>
-                    </tr>
-
-                    <tr>
-                        ${medianame} 
+<!--                        ${medianame} -->
                         <td>Media-Name:</td>
                         <td>
                             <form:select path="medianame">
@@ -39,7 +66,7 @@
                     </tr>
 
                     <tr>
-                        ${contacttype} 
+<!--                        ${contacttype} -->
                         <td>contact Type-name:</td>
                         <td>
                             <form:select path="contacttypename">
@@ -50,37 +77,40 @@
 
                     <tr>
                         <td>Email:</td>
-                        <td><form:input path="email" type="text"/></td>
+                        <td><form:input path="email" id="Email" type="text"/></td>
                     </tr> 
-                    ${map.eventDisplayList}
+                <!--    ${map.eventDisplayList} -->
                     <tr>
                         <td>Event-Display :</td>  
-                        <td><form:radiobuttons path="eventDisplay" items="${map.eventDisplayList}" /></td>
+                        <td><form:radiobuttons path="eventDisplay" id="radio" items="${map.eventDisplayList}" /></td>
                     </tr>
 
                     <tr>
                         <td>First-Name:</td>
-                        <td><form:input path="fname" type="text"/></td>
+                        <td><form:input path="fname" id="fname"  type="text"/></td>
                     </tr>
 
                     <tr>
                         <td>Last-Name:</td>
-                        <td><form:input path="lname" type="text"/></td> 
+                        <td><form:input path="lname" id="lname" type="text"/></td> 
                     </tr>
 
                     <tr>
                         <td>Contact-Email: </td>
-                        <td><form:input path="contactemail" type="text"/></td>
+                        <td><form:input path="contactemail" id="contactEmail" type="text"/></td>
                     </tr>
 
                     <tr>
                         <td>Phone Number:</td>
-                        <td><form:input path="phonenumber" type="number"/></td>
+                        <td><form:input path="phonenumber" id="phoneNo" type="number"/></td>
                     </tr>
 
                     <tr>  
                         <td></td>
-                        <td><input type="submit" value="Save" /></td>
+                        <td><input type="submit" value="Save" />
+                            <input type="reset" value="clear"/>
+                        </td>
+                        
                     </tr>
                 </table>
             </form:form>
@@ -114,9 +144,8 @@
                             <td>${cont.contactemail}</td>
                             <td>${cont.phonenumber}</td>
                             <td>
-                                <%--- <a href="/editContact?id=${contact.id}">Edit</a> ---%>
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                 <a href="/EventContactScreen/contact/deleteContact?id=${cont.id}">Delete</a>  
+                                <button type="button" id="Edit" >edit</button>
+                                 <a href="/EventsSpringApplication/contact/deleteContact?id=${cont.id}">Delete</a>  
                             </td> 
 
                         </tr>

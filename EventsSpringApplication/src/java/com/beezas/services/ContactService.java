@@ -23,7 +23,7 @@ public interface ContactService {
   
     public List<Contact> getContactList();
     
-    public void deleteContact(int Id);
+    public void deleteContact(int id);
     
     
      //public void deleteData(Contact contact);

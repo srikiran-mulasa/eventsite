@@ -35,8 +35,8 @@ public class ContactServiceImpl implements ContactService {
     
     
     @Override
-    public void deleteContact(int Id){
-      contactDao.deleteContact(Id);
+    public void deleteContact(int id){
+      contactDao.deleteContact(id);
     }
     
     @Override
